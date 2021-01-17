@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import spacy
 import os
 import sys
 import json
@@ -8,8 +9,25 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
 import requests
 from flask import Flask, request
+from keras.models import load_model
 
-import spacy
+training_model = load_model('training_model.h5')
+encoder_inputs = training_model.input[0]
+encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
+encoder_states = [state_h_enc, state_c_enc]
+encoder_model = Model(encoder_inputs, encoder_states)
+
+latent_dim = 256
+decoder_state_input_hidden = Input(shape=(latent_dim,))
+decoder_state_input_cell = Input(shape=(latent_dim,))
+decoder_states_inputs = [decoder_state_input_hidden, decoder_state_input_cell]
+decoder_outputs, state_hidden, state_cell = decoder_lstm(
+    decoder_inputs, initial_state=decoder_states_inputs)
+decoder_states = [state_hidden, state_cell]
+decoder_outputs = decoder_dense(decoder_outputs)
+decoder_model = Model([decoder_inputs] + decoder_states_inputs,
+                      [decoder_outputs] + decoder_states)
+
 spacy.load("en_core_web_sm")
 app = Flask(__name__)
 
@@ -21,9 +39,9 @@ def verify():
     # el valor de 'hub.challenge' que recibe en los argumentos de la llamada
 
     if request.args.get('hub.mode') == 'subscribe' \
-        and request.args.get('hub.challenge'):
+            and request.args.get('hub.challenge'):
         if not request.args.get('hub.verify_token') \
-            == os.environ['VERIFY_TOKEN']:
+                == os.environ['VERIFY_TOKEN']:
             return ('Verification token mismatch', 403)
         return (request.args['hub.challenge'], 200)
 
@@ -48,9 +66,12 @@ def webhook():
 
                 if messaging_event.get('message'):  # alguien envia un mensaje
 
-                    sender_id = messaging_event['sender']['id']  # el facebook ID de la persona enviando el mensaje
-                    recipient_id = messaging_event['recipient']['id']  # el facebook ID de la pagina que recibe (tu pagina)
-                    message_text = messaging_event['message']['text']  # el texto del mensaje
+                    # el facebook ID de la persona enviando el mensaje
+                    sender_id = messaging_event['sender']['id']
+                    # el facebook ID de la pagina que recibe (tu pagina)
+                    recipient_id = messaging_event['recipient']['id']
+                    # el texto del mensaje
+                    message_text = messaging_event['message']['text']
 
                     if inteligente:
                         chatbot = ChatBot('Chalo')
@@ -72,7 +93,8 @@ def webhook():
                 if messaging_event.get('optin'):  # confirmacion de optin
                     pass
 
-                if messaging_event.get('postback'):  # evento cuando usuario hace click en botones
+                # evento cuando usuario hace click en botones
+                if messaging_event.get('postback'):
                     pass
 
     return ('ok', 200)
@@ -85,7 +107,7 @@ def send_message(recipient_id, message_text):
     params = {'access_token': os.environ['PAGE_ACCESS_TOKEN']}
     headers = {'Content-Type': 'application/json'}
     data = json.dumps({'recipient': {'id': recipient_id},
-                      'message': {'text': message_text}})
+                       'message': {'text': message_text}})
 
     r = requests.post('https://graph.facebook.com/v2.6/me/messages',
                       params=params, headers=headers, data=data)
