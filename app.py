@@ -10,7 +10,6 @@ from flask import Flask, request
 from tensorflow import keras
 from keras.layers import Input, LSTM, Dense
 from keras.models import Model, load_model
-training_model = load_model('training_model.h5')
 
 app = Flask(__name__)
 
