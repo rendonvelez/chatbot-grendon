@@ -5,11 +5,10 @@ import os
 import sys
 import json
 import requests
-from flask import Flask, request
+from flask import Flask, requests
 
-from tensorflow import keras
-from keras.layers import Input, LSTM, Dense
-from keras.models import Model, load_model
+from keras.models import load_model
+training_model = load_model('training_model.h5')
 
 app = Flask(__name__)
 
