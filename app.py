@@ -29,7 +29,7 @@ import random
 # # Grouping lines by response pair
 # pairs = list(zip(lines, lines2))
 
-training_model = load_model('training_model.h5')
+# training_model = load_model('training_model.h5')
 # encoder_inputs = training_model.input[0]
 # encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
 # encoder_states = [state_h_enc, state_c_enc]
