@@ -15,19 +15,19 @@ import random
 
 # Set environment variables
 
-data_path = "human_text.txt"
-data_path2 = "robot_text.txt"
-# Defining lines as a list of each line
-with open(data_path, 'r', encoding='utf-8') as f:
-    lines = f.read().split('\n')
-with open(data_path2, 'r', encoding='utf-8') as f:
-    lines2 = f.read().split('\n')
-lines = [re.sub(r"\[\w+\]", 'hi', line) for line in lines]
-lines = [" ".join(re.findall(r"\w+", line)) for line in lines]
-lines2 = [re.sub(r"\[\w+\]", '', line) for line in lines2]
-lines2 = [" ".join(re.findall(r"\w+", line)) for line in lines2]
-# Grouping lines by response pair
-pairs = list(zip(lines, lines2))
+# data_path = "human_text.txt"
+# data_path2 = "robot_text.txt"
+# # Defining lines as a list of each line
+# with open(data_path, 'r', encoding='utf-8') as f:
+#     lines = f.read().split('\n')
+# with open(data_path2, 'r', encoding='utf-8') as f:
+#     lines2 = f.read().split('\n')
+# lines = [re.sub(r"\[\w+\]", 'hi', line) for line in lines]
+# lines = [" ".join(re.findall(r"\w+", line)) for line in lines]
+# lines2 = [re.sub(r"\[\w+\]", '', line) for line in lines2]
+# lines2 = [" ".join(re.findall(r"\w+", line)) for line in lines2]
+# # Grouping lines by response pair
+# pairs = list(zip(lines, lines2))
 
 training_model = load_model('training_model.h5')
 # encoder_inputs = training_model.input[0]
