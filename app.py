@@ -4,13 +4,14 @@
 import os
 import sys
 import json
-# from chatterbot import ChatBot
-# from chatterbot.trainers import ChatterBotCorpusTrainer
 import requests
 from flask import Flask, request
 
-# import spacy
-# spacy.load("en_core_web_sm")
+from tensorflow import keras
+from keras.layers import Input, LSTM, Dense
+from keras.models import Model, load_model
+training_model = load_model('training_model.h5')
+
 app = Flask(__name__)
 
 
