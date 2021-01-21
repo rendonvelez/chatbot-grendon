@@ -147,8 +147,6 @@ def webhook():
                         # trainer = ChatterBotCorpusTrainer(chatbot)
                         # # Train the chatbot based on the spanish corpus
                         # trainer.train('chatterbot.corpus.english')
-                        # send_message(sender_id,
-                        #     "Hi, I'm a chatbot trained on random dialogs. Would you like to chat with me?")
 
                         if not make_exit(message_text) or message_text in negative_responses:
                             response = generate_response(message_text)
