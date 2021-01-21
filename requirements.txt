@@ -4,3 +4,4 @@ gunicorn
 requests
 tensorflow-cpu
 keras
+numpy

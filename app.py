@@ -7,7 +7,24 @@ import json
 import requests
 from flask import Flask, request
 from keras.models import load_model, Model
-from keras.layers import Input, LSTM
+from keras.layers import Input, LSTM, Dense
+import numpy as np
+
+import re
+import random
+data_path = "human_text.txt"
+data_path2 = "robot_text.txt"
+# Defining lines as a list of each line
+with open(data_path, 'r', encoding='utf-8') as f:
+    lines = f.read().split('\n')
+with open(data_path2, 'r', encoding='utf-8') as f:
+    lines2 = f.read().split('\n')
+lines = [re.sub(r"\[\w+\]", 'hi', line) for line in lines]
+lines = [" ".join(re.findall(r"\w+", line)) for line in lines]
+lines2 = [re.sub(r"\[\w+\]", '', line) for line in lines2]
+lines2 = [" ".join(re.findall(r"\w+", line)) for line in lines2]
+# Grouping lines by response pair
+pairs = list(zip(lines, lines2))
 
 training_model = load_model('training_model.h5')
 encoder_inputs = training_model.input[0]
@@ -16,16 +33,40 @@ encoder_states = [state_h_enc, state_c_enc]
 encoder_model = Model(encoder_inputs, encoder_states)
 
 latent_dim = 256
+
+input_docs = []
+target_docs = []
+input_tokens = set()
+target_tokens = set()
+for line in pairs[:400]:
+    input_doc, target_doc = line[0], line[1]
+    # Appending each input sentence to input_docs
+    input_docs.append(input_doc)
+    # Splitting words from punctuation
+    target_doc = " ".join(re.findall(r"[\w']+|[^\s\w]", target_doc))
+    # Redefine target_doc below and append it to target_docs
+    target_doc = '<START> ' + target_doc + ' <END>'
+    target_docs.append(target_doc)
+
+for token in target_doc.split():
+    if token not in target_tokens:
+        target_tokens.add(token)
+
+target_tokens = sorted(list(target_tokens))
+num_decoder_tokens = len(target_tokens)
+decoder_inputs = Input(shape=(None, num_decoder_tokens))
 decoder_state_input_hidden = Input(shape=(latent_dim,))
 decoder_state_input_cell = Input(shape=(latent_dim,))
 decoder_states_inputs = [decoder_state_input_hidden, decoder_state_input_cell]
 decoder_lstm = LSTM(latent_dim, return_sequences=True, return_state=True)
-# decoder_outputs, state_hidden, state_cell = decoder_lstm(
-#     decoder_inputs, initial_state=decoder_states_inputs)
-# decoder_states = [state_hidden, state_cell]
-# decoder_outputs = decoder_dense(decoder_outputs)
-# decoder_model = Model([decoder_inputs] + decoder_states_inputs,
-#                       [decoder_outputs] + decoder_states)
+target_tokens = set()
+decoder_outputs, state_hidden, state_cell = decoder_lstm(
+    decoder_inputs, initial_state=decoder_states_inputs)
+decoder_states = [state_hidden, state_cell]
+decoder_dense = Dense(num_decoder_tokens, activation='softmax')
+decoder_outputs = decoder_dense(decoder_outputs)
+decoder_model = Model([decoder_inputs] + decoder_states_inputs,
+                      [decoder_outputs] + decoder_states)
 
 negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
 exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later", "stop")
