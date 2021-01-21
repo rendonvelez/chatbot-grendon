@@ -7,8 +7,6 @@ import json
 import requests
 from flask import Flask
 
-from tensorflow import keras
-from keras.layers import Input, LSTM, Dense
 from keras.models import load_model
 # training_model = load_model('training_model.h5')
 
