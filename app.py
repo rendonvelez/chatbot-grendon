@@ -48,18 +48,37 @@ for line in pairs[:400]:
     target_doc = '<START> ' + target_doc + ' <END>'
     target_docs.append(target_doc)
 
-for token in target_doc.split():
-    if token not in target_tokens:
-        target_tokens.add(token)
+    # Now we split up each sentence into words and add each unique word to our vocabulary set
+    for token in re.findall(r"[\w']+|[^\s\w]", input_doc):
+        if token not in input_tokens:
+            input_tokens.add(token)
+    for token in target_doc.split():
+        if token not in target_tokens:
+            target_tokens.add(token)
+
+input_tokens = sorted(list(input_tokens))
+target_tokens = sorted(list(target_tokens))
+num_encoder_tokens = len(input_tokens)
+num_decoder_tokens = len(target_tokens)
 
 target_tokens = sorted(list(target_tokens))
 num_decoder_tokens = len(target_tokens)
 
+input_features_dict = dict(
+    [(token, i) for i, token in enumerate(input_tokens)])
 target_features_dict = dict(
     [(token, i) for i, token in enumerate(target_tokens)])
 
+reverse_input_features_dict = dict(
+    (i, token) for token, i in input_features_dict.items())
 reverse_target_features_dict = dict(
     (i, token) for token, i in target_features_dict.items())
+
+
+max_encoder_seq_length = max(
+    [len(re.findall(r"[\w']+|[^\s\w]", input_doc)) for input_doc in input_docs])
+max_decoder_seq_length = max(
+    [len(re.findall(r"[\w']+|[^\s\w]", target_doc)) for target_doc in target_docs])
 
 decoder_inputs = Input(shape=(None, num_decoder_tokens))
 decoder_state_input_hidden = Input(shape=(latent_dim,))
@@ -107,7 +126,7 @@ def webhook():
 
     # log(data)  # logging, no necesario en produccion
 
-    inteligente = False
+    inteligente = True
 
     if data['object'] == 'page':
 
@@ -126,9 +145,7 @@ def webhook():
                     if inteligente:
                         # chatbot = ChatBot('Chalo')
                         # trainer = ChatterBotCorpusTrainer(chatbot)
-
                         # # Train the chatbot based on the spanish corpus
-
                         # trainer.train('chatterbot.corpus.english')
                         # send_message(sender_id,
                         #     "Hi, I'm a chatbot trained on random dialogs. Would you like to chat with me?")
@@ -138,18 +155,14 @@ def webhook():
                         else:
                             send_message(sender_id, 'Ok, have a great day!')
                             return
-
                         send_message(sender_id, response.text)
                     else:
-                        send_message(sender_id, 'Hola')
-
+                        send_message(sender_id, "Hola")
                 if messaging_event.get('delivery'):  # confirmacion de delivery
                     pass
-
                 if messaging_event.get('optin'):  # confirmacion de optin
                     pass
-
-                # evento cuando usuario hace click en botones
+                    # evento cuando usuario hace click en botones
                 if messaging_event.get('postback'):
                     pass
 
