@@ -7,8 +7,8 @@ import json
 import requests
 from flask import Flask
 
-from keras.models import load_model
-# training_model = load_model('training_model.h5')
+from tensorflow.keras.models import load_model
+training_model = load_model('training_model.h5')
 
 app = Flask(__name__)
 
