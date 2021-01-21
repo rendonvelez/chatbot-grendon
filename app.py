@@ -6,7 +6,8 @@ import sys
 import json
 import requests
 from flask import Flask, request
-from keras.models import load_model
+from keras.models import load_model, Model
+from keras.layers import Input, LSTM
 
 training_model = load_model('training_model.h5')
 encoder_inputs = training_model.input[0]
@@ -18,12 +19,13 @@ latent_dim = 256
 decoder_state_input_hidden = Input(shape=(latent_dim,))
 decoder_state_input_cell = Input(shape=(latent_dim,))
 decoder_states_inputs = [decoder_state_input_hidden, decoder_state_input_cell]
-decoder_outputs, state_hidden, state_cell = decoder_lstm(
-    decoder_inputs, initial_state=decoder_states_inputs)
-decoder_states = [state_hidden, state_cell]
-decoder_outputs = decoder_dense(decoder_outputs)
-decoder_model = Model([decoder_inputs] + decoder_states_inputs,
-                      [decoder_outputs] + decoder_states)
+decoder_lstm = LSTM(latent_dim, return_sequences=True, return_state=True)
+# decoder_outputs, state_hidden, state_cell = decoder_lstm(
+#     decoder_inputs, initial_state=decoder_states_inputs)
+# decoder_states = [state_hidden, state_cell]
+# decoder_outputs = decoder_dense(decoder_outputs)
+# decoder_model = Model([decoder_inputs] + decoder_states_inputs,
+#                       [decoder_outputs] + decoder_states)
 
 negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
 exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later", "stop")
@@ -53,6 +55,7 @@ def webhook():
     # endpoint para procesar los mensajes que llegan
 
     data = request.get_json()
+    print(data)
 
     # log(data)  # logging, no necesario en produccion
 
