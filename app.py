@@ -4,102 +4,13 @@
 import os
 import sys
 import json
+# from chatterbot import ChatBot
+# from chatterbot.trainers import ChatterBotCorpusTrainer
 import requests
 from flask import Flask, request
-from keras.models import load_model, Model
-from keras.layers import Input, LSTM, Dense
-import numpy as np
 
-import re
-import random
-
-# Set environment variables
-
-# data_path = "human_text.txt"
-# data_path2 = "robot_text.txt"
-# # Defining lines as a list of each line
-# with open(data_path, 'r', encoding='utf-8') as f:
-#     lines = f.read().split('\n')
-# with open(data_path2, 'r', encoding='utf-8') as f:
-#     lines2 = f.read().split('\n')
-# lines = [re.sub(r"\[\w+\]", 'hi', line) for line in lines]
-# lines = [" ".join(re.findall(r"\w+", line)) for line in lines]
-# lines2 = [re.sub(r"\[\w+\]", '', line) for line in lines2]
-# lines2 = [" ".join(re.findall(r"\w+", line)) for line in lines2]
-# # Grouping lines by response pair
-# pairs = list(zip(lines, lines2))
-
-# training_model = load_model('training_model.h5')
-# encoder_inputs = training_model.input[0]
-# encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
-# encoder_states = [state_h_enc, state_c_enc]
-# encoder_model = Model(encoder_inputs, encoder_states)
-
-# latent_dim = 256
-
-# input_docs = []
-# target_docs = []
-# input_tokens = set()
-# target_tokens = set()
-# for line in pairs[:400]:
-#     input_doc, target_doc = line[0], line[1]
-#     # Appending each input sentence to input_docs
-#     input_docs.append(input_doc)
-#     # Splitting words from punctuation
-#     target_doc = " ".join(re.findall(r"[\w']+|[^\s\w]", target_doc))
-#     # Redefine target_doc below and append it to target_docs
-#     target_doc = '<START> ' + target_doc + ' <END>'
-#     target_docs.append(target_doc)
-
-#     # Now we split up each sentence into words and add each unique word to our vocabulary set
-#     for token in re.findall(r"[\w']+|[^\s\w]", input_doc):
-#         if token not in input_tokens:
-#             input_tokens.add(token)
-#     for token in target_doc.split():
-#         if token not in target_tokens:
-#             target_tokens.add(token)
-
-# input_tokens = sorted(list(input_tokens))
-# target_tokens = sorted(list(target_tokens))
-# num_encoder_tokens = len(input_tokens)
-# num_decoder_tokens = len(target_tokens)
-
-# target_tokens = sorted(list(target_tokens))
-# num_decoder_tokens = len(target_tokens)
-
-# input_features_dict = dict(
-#     [(token, i) for i, token in enumerate(input_tokens)])
-# target_features_dict = dict(
-#     [(token, i) for i, token in enumerate(target_tokens)])
-
-# reverse_input_features_dict = dict(
-#     (i, token) for token, i in input_features_dict.items())
-# reverse_target_features_dict = dict(
-#     (i, token) for token, i in target_features_dict.items())
-
-
-# max_encoder_seq_length = max(
-#     [len(re.findall(r"[\w']+|[^\s\w]", input_doc)) for input_doc in input_docs])
-# max_decoder_seq_length = max(
-#     [len(re.findall(r"[\w']+|[^\s\w]", target_doc)) for target_doc in target_docs])
-
-# decoder_inputs = Input(shape=(None, num_decoder_tokens))
-# decoder_state_input_hidden = Input(shape=(latent_dim,))
-# decoder_state_input_cell = Input(shape=(latent_dim,))
-# decoder_states_inputs = [decoder_state_input_hidden, decoder_state_input_cell]
-# decoder_lstm = LSTM(latent_dim, return_sequences=True, return_state=True)
-# target_tokens = set()
-# decoder_outputs, state_hidden, state_cell = decoder_lstm(
-#     decoder_inputs, initial_state=decoder_states_inputs)
-# decoder_states = [state_hidden, state_cell]
-# decoder_dense = Dense(num_decoder_tokens, activation='softmax')
-# decoder_outputs = decoder_dense(decoder_outputs)
-# decoder_model = Model([decoder_inputs] + decoder_states_inputs,
-#                       [decoder_outputs] + decoder_states)
-
-# negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
-# exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later", "stop")
-
+# import spacy
+# spacy.load("en_core_web_sm")
 app = Flask(__name__)
 
 
@@ -125,7 +36,6 @@ def webhook():
     # endpoint para procesar los mensajes que llegan
 
     data = request.get_json()
-    print(data)
 
     # log(data)  # logging, no necesario en produccion
 
@@ -148,22 +58,24 @@ def webhook():
                     if inteligente:
                         # chatbot = ChatBot('Chalo')
                         # trainer = ChatterBotCorpusTrainer(chatbot)
+
                         # # Train the chatbot based on the spanish corpus
+
                         # trainer.train('chatterbot.corpus.english')
 
-                        # if not make_exit(message_text) or message_text in negative_responses:
-                        #     response = generate_response(message_text)
-                        # else:
-                        #     send_message(sender_id, 'Ok, have a great day!')
-                        #     return
-                        send_message(sender_id, 'Ok, have a great day!')
+                        # response = chatbot.get_response(message_text)
+
+                        send_message(sender_id, "Entonces, bien o que")
                     else:
-                        send_message(sender_id, "Hola")
+                        send_message(sender_id, 'Hola')
+
                 if messaging_event.get('delivery'):  # confirmacion de delivery
                     pass
+
                 if messaging_event.get('optin'):  # confirmacion de optin
                     pass
-                    # evento cuando usuario hace click en botones
+
+                # evento cuando usuario hace click en botones
                 if messaging_event.get('postback'):
                     pass
 
@@ -191,66 +103,5 @@ def log(message):  # funcion de logging para heroku
     sys.stdout.flush()
 
 
-def decode_response(test_input):
-    # Getting the output states to pass into the decoder
-    states_value = encoder_model.predict(test_input)
-    # Generating empty target sequence of length 1
-    target_seq = np.zeros((1, 1, num_decoder_tokens))
-    # Setting the first token of target sequence with the start token
-    target_seq[0, 0, target_features_dict['<START>']] = 1.
-
-    # A variable to store our response word by word
-    decoded_sentence = ''
-
-    stop_condition = False
-    while not stop_condition:
-        # Predicting output tokens with probabilities and states
-        output_tokens, hidden_state, cell_state = decoder_model.predict(
-            [target_seq] + states_value)
-        # Choosing the one with highest probability
-        sampled_token_index = np.argmax(output_tokens[0, -1, :])
-        sampled_token = reverse_target_features_dict[sampled_token_index]
-        decoded_sentence += " " + sampled_token
-        # Stop if hit max length or found the stop token
-        if (sampled_token == '<END>' or len(decoded_sentence) > max_decoder_seq_length):
-            stop_condition = True
-        # Update the target sequence
-        target_seq = np.zeros((1, 1, num_decoder_tokens))
-        target_seq[0, 0, sampled_token_index] = 1.
-        # Update states
-        states_value = [hidden_state, cell_state]
-    return decoded_sentence
-
- # Method to convert user input into a matrix
-
-
-def string_to_matrix(user_input):
-    tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
-    user_input_matrix = np.zeros(
-        (1, max_encoder_seq_length, num_encoder_tokens), dtype='float32')
-    for timestep, token in enumerate(tokens):
-        if token in input_features_dict:
-            user_input_matrix[0, timestep, input_features_dict[token]] = 1.
-    return user_input_matrix
-
-
-def generate_response(user_input):
-    input_matrix = string_to_matrix(user_input)
-    chatbot_response = decode_response(input_matrix)
-    # Remove <START> and <END> tokens from chatbot_response
-    chatbot_response = chatbot_response.replace("<START>", '')
-    chatbot_response = chatbot_response.replace("<END>", '')
-    return chatbot_response
-
-# Method to check for exit commands
-
-
-def make_exit(reply):
-    for exit_command in exit_commands:
-        if exit_command in reply:
-            return True
-    return False
-
-
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
