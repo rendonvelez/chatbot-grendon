@@ -54,6 +54,13 @@ for token in target_doc.split():
 
 target_tokens = sorted(list(target_tokens))
 num_decoder_tokens = len(target_tokens)
+
+target_features_dict = dict(
+    [(token, i) for i, token in enumerate(target_tokens)])
+
+reverse_target_features_dict = dict(
+    (i, token) for token, i in target_features_dict.items())
+
 decoder_inputs = Input(shape=(None, num_decoder_tokens))
 decoder_state_input_hidden = Input(shape=(latent_dim,))
 decoder_state_input_cell = Input(shape=(latent_dim,))
