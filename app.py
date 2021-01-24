@@ -144,8 +144,6 @@ def webhook():
     inteligente = True
 
     if data['object'] == 'page':
-
-        log(str(data['entry']))
         for entry in data['entry']:
             for messaging_event in entry['messaging']:
 
@@ -160,10 +158,7 @@ def webhook():
                     message_text = messaging_event['message']['text']
 
                     if inteligente:
-                        if sessionid != recipient_id:
-                            send_message(
-                                sender_id, "Hola, bienvenido")
-                        elif make_exit(message_text):
+                       if make_exit(message_text):
                             send_message(
                                 sender_id, "Que tengas un hermoso día!")
                         elif message_text in negative_responses:
@@ -174,8 +169,6 @@ def webhook():
                                 sender_id, "generate_response(message_text)")
                     else:
                         send_message(sender_id, 'Hola')
-
-                    sessionid = recipient_id
 
                 if messaging_event.get('delivery'):  # confirmacion de delivery
                     pass
