@@ -7,9 +7,10 @@ import random
 import sys
 import json
 import requests
-from flask import Flask, request
-
+import numpy as np
 import tensorflow as tf
+
+from flask import Flask, request
 
 data_path = "model/human_text.txt"
 data_path2 = "model/robot_text.txt"
@@ -61,6 +62,21 @@ reverse_input_features_dict = dict(
     (i, token) for token, i in input_features_dict.items())
 reverse_target_features_dict = dict(
     (i, token) for token, i in target_features_dict.items())
+
+# Maximum length of sentences in input and target documents
+max_encoder_seq_length = max(
+    [len(re.findall(r"[\w']+|[^\s\w]", input_doc)) for input_doc in input_docs])
+max_decoder_seq_length = max(
+    [len(re.findall(r"[\w']+|[^\s\w]", target_doc)) for target_doc in target_docs])
+encoder_input_data = np.zeros(
+    (len(input_docs), max_encoder_seq_length, num_encoder_tokens),
+    dtype='float32')
+decoder_input_data = np.zeros(
+    (len(input_docs), max_decoder_seq_length, num_decoder_tokens),
+    dtype='float32')
+decoder_target_data = np.zeros(
+    (len(input_docs), max_decoder_seq_length, num_decoder_tokens),
+    dtype='float32')
 
 training_model = tf.keras.models.load_model('model/training_model.h5')
 
