@@ -144,6 +144,7 @@ def webhook():
     inteligente = True
 
     if data['object'] == 'page':
+
         for entry in data['entry']:
             for messaging_event in entry['messaging']:
 
@@ -158,7 +159,7 @@ def webhook():
                     message_text = messaging_event['message']['text']
 
                     if inteligente:
-                       if make_exit(message_text):
+                        if make_exit(message_text):
                             send_message(
                                 sender_id, "Que tengas un hermoso día!")
                         elif message_text in negative_responses:
