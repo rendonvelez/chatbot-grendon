@@ -111,6 +111,8 @@ negative_responses = ("no", "negativo", "nada", "nop", "nopi")
 exit_commands = ("chao", "adios", "nos vemos",
                  "suerte", "chaito", "bye", "chaolin")
 
+sessionid = 0
+
 app = Flask(__name__)
 
 
@@ -140,7 +142,6 @@ def webhook():
     # log(data)  # logging, no necesario en produccion
 
     inteligente = True
-    inicio = True
 
     if data['object'] == 'page':
 
@@ -153,18 +154,17 @@ def webhook():
                     sender_id = messaging_event['sender']['id']
                     # el facebook ID de la pagina que recibe (tu pagina)
                     recipient_id = messaging_event['recipient']['id']
+
                     # el texto del mensaje
                     message_text = messaging_event['message']['text']
 
                     if inteligente:
-                        if inicio:
+                        if sessionid != recipient_id:
                             send_message(
                                 sender_id, "Hola, bienvenido")
-                            inicio = False
                         elif make_exit(message_text):
                             send_message(
                                 sender_id, "Que tengas un hermoso día!")
-                            inicio = True
                         elif message_text in negative_responses:
                             send_message(
                                 sender_id, "Ok, perfecto!")
@@ -173,6 +173,8 @@ def webhook():
                                 sender_id, "generate_response(message_text)")
                     else:
                         send_message(sender_id, 'Hola')
+
+                    sessionid = recipient_id
 
                 if messaging_event.get('delivery'):  # confirmacion de delivery
                     pass
