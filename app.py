@@ -5,7 +5,6 @@ import os
 import sys
 import json
 import requests
-import tensorflow as tf
 from flask import Flask
 
 
