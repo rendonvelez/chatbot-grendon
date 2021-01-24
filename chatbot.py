@@ -6,8 +6,8 @@ from tensorflow import keras
 from keras.layers import Input, LSTM, Dense
 from keras.models import Model
 
-data_path = "model/human_text.txt"
-data_path2 = "model/robot_text.txt"
+data_path = "human_text.txt"
+data_path2 = "robot_text.txt"
 # Defining lines as a list of each line
 with open(data_path, 'r', encoding='utf-8') as f:
     lines = f.read().split('\n')
@@ -20,6 +20,7 @@ lines2 = [" ".join(re.findall(r"\w+", line.lower())) for line in lines2]
 # grouping lines by response pair
 pairs = list(zip(lines, lines2))
 # random.shuffle(pairs)
+
 
 input_docs = []
 target_docs = []
@@ -79,8 +80,8 @@ for line, (input_doc, target_doc) in enumerate(zip(input_docs, target_docs)):
     for timestep, token in enumerate(target_doc.split()):
         decoder_input_data[line, timestep, target_features_dict[token]] = 1.
         if timestep > 0:
-            decoder_target_data[line, timestep -
-                                1, target_features_dict[token]] = 1.
+            decoder_target_data[line, timestep - 1,
+                                target_features_dict[token]] = 1.
 
 # Dimensionality
 dimensionality = 256
@@ -100,7 +101,7 @@ decoder_outputs, decoder_state_hidden, decoder_state_cell = decoder_lstm(
 decoder_dense = Dense(num_decoder_tokens, activation='softmax')
 decoder_outputs = decoder_dense(decoder_outputs)
 
-training_model = tf.keras.models.load_model('model/training_model.h5')
+training_model = tf.keras.models.load_model('training_model.h5')
 encoder_inputs = training_model.input[0]
 encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
 encoder_states = [state_h_enc, state_c_enc]
@@ -195,3 +196,7 @@ class ChatBot:
                 print("Que tengas un hermoso día!")
                 return True
         return False
+
+
+chatbot = ChatBot()
+chatbot.start_chat()

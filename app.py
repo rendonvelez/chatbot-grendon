@@ -156,11 +156,15 @@ def webhook():
                     message_text = messaging_event['message']['text']
 
                     if inteligente:
-                        if message_text in negative_responses:
+                        if make_exit(message_text):
                             send_message(
                                 sender_id, "Que tengas un hermoso día!")
+                        elif message_text in negative_responses:
+                            send_message(
+                                sender_id, "Ok, perfecto!")
                         else:
-                            send_message(sender_id, 'Hola')
+                            send_message(
+                                sender_id, generate_response(message_text))
                     else:
                         send_message(sender_id, 'Hola')
 
@@ -224,17 +228,6 @@ def decode_response(test_input):
     return decoded_sentence
 
 
-def start_chat():
-    return "Hola, bienvenido, en que puedo ayudarte?"
-
-    chat(user_response)
-
-
-def chat(reply):
-    if not make_exit(reply):
-        return generate_response(reply)
-
-
 def string_to_matrix(user_input):
     tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
     user_input_matrix = np.zeros(
@@ -258,7 +251,6 @@ def generate_response(user_input):
 def make_exit(reply):
     for exit_command in exit_commands:
         if exit_command in reply:
-            print("Que tengas un hermoso día!")
             return True
     return False
 
