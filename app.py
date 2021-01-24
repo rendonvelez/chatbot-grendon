@@ -63,32 +63,6 @@ reverse_input_features_dict = dict(
 reverse_target_features_dict = dict(
     (i, token) for token, i in target_features_dict.items())
 
-# Maximum length of sentences in input and target documents
-max_encoder_seq_length = max(
-    [len(re.findall(r"[\w']+|[^\s\w]", input_doc)) for input_doc in input_docs])
-max_decoder_seq_length = max(
-    [len(re.findall(r"[\w']+|[^\s\w]", target_doc)) for target_doc in target_docs])
-encoder_input_data = np.zeros(
-    (len(input_docs), max_encoder_seq_length, num_encoder_tokens),
-    dtype='float32')
-decoder_input_data = np.zeros(
-    (len(input_docs), max_decoder_seq_length, num_decoder_tokens),
-    dtype='float32')
-decoder_target_data = np.zeros(
-    (len(input_docs), max_decoder_seq_length, num_decoder_tokens),
-    dtype='float32')
-
-for line, (input_doc, target_doc) in enumerate(zip(input_docs, target_docs)):
-    for timestep, token in enumerate(re.findall(r"[\w']+|[^\s\w]", input_doc)):
-        # Assign 1. for the current line, timestep, & word in encoder_input_data
-        encoder_input_data[line, timestep, input_features_dict[token]] = 1.
-
-    for timestep, token in enumerate(target_doc.split()):
-        decoder_input_data[line, timestep, target_features_dict[token]] = 1.
-        if timestep > 0:
-            decoder_target_data[line, timestep -
-                                1, target_features_dict[token]] = 1.
-
 training_model = tf.keras.models.load_model('model/training_model.h5')
 
 app = Flask(__name__)
