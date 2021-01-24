@@ -63,6 +63,12 @@ reverse_input_features_dict = dict(
 reverse_target_features_dict = dict(
     (i, token) for token, i in target_features_dict.items())
 
+# Maximum length of sentences in input and target documents
+max_encoder_seq_length = max(
+    [len(re.findall(r"[\w']+|[^\s\w]", input_doc)) for input_doc in input_docs])
+max_decoder_seq_length = max(
+    [len(re.findall(r"[\w']+|[^\s\w]", target_doc)) for target_doc in target_docs])
+
 training_model = tf.keras.models.load_model('model/training_model.h5')
 
 app = Flask(__name__)
