@@ -140,6 +140,7 @@ def webhook():
     # log(data)  # logging, no necesario en produccion
 
     inteligente = True
+    inicio = True
 
     if data['object'] == 'page':
 
@@ -156,9 +157,16 @@ def webhook():
                     message_text = messaging_event['message']['text']
 
                     if inteligente:
-                        if make_exit(message_text):
+                        if inicio:
+                            send_message(
+                                sender_id, "Hola, bienvenido")
+                            send_message(
+                                sender_id, generate_response(message_text))
+                            inicio = False
+                        elif make_exit(message_text):
                             send_message(
                                 sender_id, "Que tengas un hermoso día!")
+                            inicio = True
                         elif message_text in negative_responses:
                             send_message(
                                 sender_id, "Ok, perfecto!")
