@@ -107,37 +107,9 @@ decoder_outputs = decoder_dense(decoder_outputs)
 decoder_model = Model([decoder_inputs] + decoder_states_inputs,
                       [decoder_outputs] + decoder_states)
 
-
-def decode_response(test_input):
-    # Getting the output states to pass into the decoder
-    states_value = encoder_model.predict(test_input)
-    # Generating empty target sequence of length 1
-    target_seq = np.zeros((1, 1, num_decoder_tokens))
-    # Setting the first token of target sequence with the start token
-    target_seq[0, 0, target_features_dict['<START>']] = 1.
-
-    # A variable to store our response word by word
-    decoded_sentence = ''
-
-    stop_condition = False
-    while not stop_condition:
-        # Predicting output tokens with probabilities and states
-        output_tokens, hidden_state, cell_state = decoder_model.predict(
-            [target_seq] + states_value)
-    # Choosing the one with highest probability
-        sampled_token_index = np.argmax(output_tokens[0, -1, :])
-        sampled_token = reverse_target_features_dict[sampled_token_index]
-        decoded_sentence += " " + sampled_token
-    # Stop if hit max length or found the stop token
-        if (sampled_token == '<END>' or len(decoded_sentence) > max_decoder_seq_length):
-            stop_condition = True
-    # Update the target sequence
-        target_seq = np.zeros((1, 1, num_decoder_tokens))
-        target_seq[0, 0, sampled_token_index] = 1.
-        # Update states
-        states_value = [hidden_state, cell_state]
-    return decoded_sentence
-
+negative_responses = ("no", "negativo", "nada", "nop", "nopi")
+exit_commands = ("chao", "adios", "nos vemos",
+                 "suerte", "chaito", "bye", "chaolin")
 
 app = Flask(__name__)
 
@@ -184,7 +156,11 @@ def webhook():
                     message_text = messaging_event['message']['text']
 
                     if inteligente:
-                        send_message(sender_id, 'Tonces')
+                        if message_text in negative_responses:
+                            send_message(
+                                sender_id, "Que tengas un hermoso día!")
+                        else:
+                            send_message(sender_id, 'Hola')
                     else:
                         send_message(sender_id, 'Hola')
 
@@ -215,6 +191,76 @@ def send_message(recipient_id, message_text):
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)
+
+
+def decode_response(test_input):
+    # Getting the output states to pass into the decoder
+    states_value = encoder_model.predict(test_input)
+    # Generating empty target sequence of length 1
+    target_seq = np.zeros((1, 1, num_decoder_tokens))
+    # Setting the first token of target sequence with the start token
+    target_seq[0, 0, target_features_dict['<START>']] = 1.
+
+    # A variable to store our response word by word
+    decoded_sentence = ''
+
+    stop_condition = False
+    while not stop_condition:
+        # Predicting output tokens with probabilities and states
+        output_tokens, hidden_state, cell_state = decoder_model.predict(
+            [target_seq] + states_value)
+    # Choosing the one with highest probability
+        sampled_token_index = np.argmax(output_tokens[0, -1, :])
+        sampled_token = reverse_target_features_dict[sampled_token_index]
+        decoded_sentence += " " + sampled_token
+    # Stop if hit max length or found the stop token
+        if (sampled_token == '<END>' or len(decoded_sentence) > max_decoder_seq_length):
+            stop_condition = True
+    # Update the target sequence
+        target_seq = np.zeros((1, 1, num_decoder_tokens))
+        target_seq[0, 0, sampled_token_index] = 1.
+        # Update states
+        states_value = [hidden_state, cell_state]
+    return decoded_sentence
+
+
+def start_chat():
+    return "Hola, bienvenido, en que puedo ayudarte?"
+
+    chat(user_response)
+
+
+def chat(reply):
+    if not make_exit(reply):
+        return generate_response(reply)
+
+
+def string_to_matrix(user_input):
+    tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
+    user_input_matrix = np.zeros(
+        (1, max_encoder_seq_length, num_encoder_tokens), dtype='float32')
+    for timestep, token in enumerate(tokens):
+        if token in input_features_dict:
+            user_input_matrix[0, timestep, input_features_dict[token]] = 1.
+        return user_input_matrix
+
+
+def generate_response(user_input):
+    input_matrix = string_to_matrix(user_input)
+    chatbot_response = decode_response(input_matrix)
+    # Remove <START> and <END> tokens from chatbot_response
+    chatbot_response = chatbot_response.replace("<START>", '')
+    chatbot_response = chatbot_response.replace("<END>", '')
+    return chatbot_response
+    # Method to check for exit commands
+
+
+def make_exit(reply):
+    for exit_command in exit_commands:
+        if exit_command in reply:
+            print("Que tengas un hermoso día!")
+            return True
+    return False
 
 
 def log(message):  # funcion de logging para heroku
