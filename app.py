@@ -145,6 +145,7 @@ def webhook():
 
     if data['object'] == 'page':
 
+        log(str(data['entry']))
         for entry in data['entry']:
             for messaging_event in entry['messaging']:
 
