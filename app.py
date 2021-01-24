@@ -5,7 +5,7 @@ import os
 import sys
 import json
 import requests
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
@@ -52,16 +52,7 @@ def webhook():
                     message_text = messaging_event['message']['text']
 
                     if inteligente:
-                        # chatbot = ChatBot('Chalo')
-                        # trainer = ChatterBotCorpusTrainer(chatbot)
-
-                        # # Train the chatbot based on the spanish corpus
-
-                        # trainer.train('chatterbot.corpus.english')
-
-                        # response = chatbot.get_response(message_text)
-
-                        send_message(sender_id, "Entonces, bien o que")
+                        send_message(sender_id, 'Tonces')
                     else:
                         send_message(sender_id, 'Hola')
 
