@@ -1,13 +1,33 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import chatbot
 import os
 import sys
 import json
 import requests
-
+import re
+import random
+import numpy as np
+import tensorflow as tf
+from tensorflow import keras
+from keras.layers import Input, LSTM, Dense
+from keras.models import Model
 from flask import Flask, request
+
+data_path = "model/human_text.txt"
+data_path2 = "model/robot_text.txt"
+# Defining lines as a list of each line
+with open(data_path, 'r', encoding='utf-8') as f:
+    lines = f.read().split('\n')
+with open(data_path2, 'r', encoding='utf-8') as f:
+    lines2 = f.read().split('\n')
+lines = [re.sub(r"\[\w+\]", 'hola', line.lower()) for line in lines]
+lines = [" ".join(re.findall(r"\w+", line.lower())) for line in lines]
+lines2 = [re.sub(r"\[\w+\]", '', line.lower()) for line in lines2]
+lines2 = [" ".join(re.findall(r"\w+", line.lower())) for line in lines2]
+# grouping lines by response pair
+pairs = list(zip(lines, lines2))
+# random.shuffle(pairs)
 
 app = Flask(__name__)
 
