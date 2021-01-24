@@ -6,4 +6,5 @@ click
 gunicorn
 itsdangerous
 requests
+tensorflow-cpu
 keras

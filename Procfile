@@ -1,2 +1,2 @@
-pip install --no-index tensorflow_cpu
+ pip3 install tensorflow-cpu
 web: gunicorn app:app --log-file=-
