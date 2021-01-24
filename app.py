@@ -5,10 +5,11 @@ import os
 import sys
 import json
 import requests
+import tensorflow as tf
 from flask import Flask
 
-from tensorflow.keras.models import load_model
-training_model = load_model('training_model.h5')
+
+training_model = tf.keras.models.load_model('training_model.h5')
 
 app = Flask(__name__)
 
