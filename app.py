@@ -1,14 +1,14 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import chatbot
 import os
 import sys
 import json
 import requests
+
 from flask import Flask, request
 
-import tensorflow as tf
-model = tf.keras.models.load_model('model/training_model.h5')
 app = Flask(__name__)
 
 
