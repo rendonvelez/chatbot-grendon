@@ -160,8 +160,6 @@ def webhook():
                         if inicio:
                             send_message(
                                 sender_id, "Hola, bienvenido")
-                            send_message(
-                                sender_id, generate_response(message_text))
                             inicio = False
                         elif make_exit(message_text):
                             send_message(
@@ -172,7 +170,7 @@ def webhook():
                                 sender_id, "Ok, perfecto!")
                         else:
                             send_message(
-                                sender_id, generate_response(message_text))
+                                sender_id, "generate_response(message_text)")
                     else:
                         send_message(sender_id, 'Hola')
 
