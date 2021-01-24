@@ -8,3 +8,4 @@ itsdangerous
 requests
 tensorflow-cpu
 keras
+numpy
