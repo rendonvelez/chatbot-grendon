@@ -2,13 +2,32 @@
 # -*- coding: utf-8 -*-
 
 import os
+import re
+import random
 import sys
 import json
 import requests
 from flask import Flask, request
 
 import tensorflow as tf
+
+data_path = "model/human_text.txt"
+data_path2 = "model/robot_text.txt"
+# Defining lines as a list of each line
+with open(data_path, 'r', encoding='utf-8') as f:
+    lines = f.read().split('\n')
+with open(data_path2, 'r', encoding='utf-8') as f:
+    lines2 = f.read().split('\n')
+lines = [re.sub(r"\[\w+\]", 'hola', line.lower()) for line in lines]
+lines = [" ".join(re.findall(r"\w+", line.lower())) for line in lines]
+lines2 = [re.sub(r"\[\w+\]", '', line.lower()) for line in lines2]
+lines2 = [" ".join(re.findall(r"\w+", line.lower())) for line in lines2]
+# grouping lines by response pair
+pairs = list(zip(lines, lines2))
+# random.shuffle(pairs)
+
 training_model = tf.keras.models.load_model('model/training_model.h5')
+
 app = Flask(__name__)
 
 
