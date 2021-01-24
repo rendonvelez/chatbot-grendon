@@ -9,8 +9,6 @@ import tensorflow as tf
 from flask import Flask
 
 
-#training_model = tf.keras.models.load_model('training_model.h5')
-
 app = Flask(__name__)
 
 
