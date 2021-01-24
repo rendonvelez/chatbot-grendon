@@ -6,5 +6,5 @@ click
 gunicorn
 itsdangerous
 requests
-tensorflow-cpu
+tensorflow==1.15
 keras
