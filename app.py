@@ -36,7 +36,7 @@ input_docs = []
 target_docs = []
 input_tokens = set()
 target_tokens = set()
-for line in pairs[:400]:
+for line in pairs:
     input_doc, target_doc = line[0], line[1]
     # Appending each input sentence to input_docs
     input_docs.append(input_doc)
