@@ -244,7 +244,7 @@ def string_to_matrix(user_input):
 # Method that will create a response using seq2seq model we built
 
 
-def generate_response(self, user_input):
+def generate_response(user_input):
     input_matrix = self.string_to_matrix(user_input)
     chatbot_response = decode_response(input_matrix)
     # Remove <START> and <END> tokens from chatbot_response
