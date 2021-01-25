@@ -1,4 +1,4 @@
-[start] 
+[start] Buenos días
 tienes domicilio?
 que cuesta la arepa de huevo?
 y vendes chocolatico caliente?
@@ -16,7 +16,7 @@ aahhh y una gaseosa
 una cocacola litro y cuarto
 Clla 55 aa 78 int 1919 , Urb Pino Alto , eso es villa verde,me mandas  deviuelta de $20
 Gracias
-[start] Buenas tardes
+start] Buenas tardes
 chica tienes servicio 
 ok,me envias un calzoni de pollo con carnes sin maicitos, porfa
 No solo el calzone
