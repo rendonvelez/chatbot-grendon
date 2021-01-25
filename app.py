@@ -245,7 +245,7 @@ def string_to_matrix(user_input):
 
 
 def generate_response(user_input):
-    input_matrix = self.string_to_matrix(user_input)
+    input_matrix = string_to_matrix(user_input)
     chatbot_response = decode_response(input_matrix)
     # Remove <START> and <END> tokens from chatbot_response
     chatbot_response = chatbot_response.replace("<START>", '')
