@@ -8,10 +8,15 @@ import json
 import random
 import requests
 import numpy as np
-from keras.models import load_model, Model
+from tensorflow import keras
 from keras.layers import Input, LSTM, Dense
+from keras.models import Model, load_model
 
 from flask import Flask, request
+
+negative_responses = ("no", "negativo", "nada", "nop", "nopi")
+exit_commands = ("chao", "adios", "nos vemos",
+                 "suerte", "chaito", "bye", "chaolin")
 
 data_path = "model/human_text.txt"
 data_path2 = "model/robot_text.txt"
@@ -20,11 +25,11 @@ with open(data_path, 'r', encoding='utf-8') as f:
     lines = f.read().split('\n')
 with open(data_path2, 'r', encoding='utf-8') as f:
     lines2 = f.read().split('\n')
-lines = [re.sub(r"\[\w+\]", 'hola', line.lower()) for line in lines]
-lines = [" ".join(re.findall(r"\w+", line.lower())) for line in lines]
-lines2 = [re.sub(r"\[\w+\]", '', line.lower()) for line in lines2]
-lines2 = [" ".join(re.findall(r"\w+", line.lower())) for line in lines2]
-# grouping lines by response pair
+lines = [re.sub(r"\[\w+\]", 'hola', line) for line in lines]
+lines = [" ".join(re.findall(r"\w+", line)) for line in lines]
+lines2 = [re.sub(r"\[\w+\]", '', line) for line in lines2]
+lines2 = [" ".join(re.findall(r"\w+", line)) for line in lines2]
+# Grouping lines by response pair
 pairs = list(zip(lines, lines2))
 # random.shuffle(pairs)
 
@@ -32,8 +37,7 @@ input_docs = []
 target_docs = []
 input_tokens = set()
 target_tokens = set()
-
-for line in pairs:
+for line in pairs[:400]:
     input_doc, target_doc = line[0], line[1]
     # Appending each input sentence to input_docs
     input_docs.append(input_doc)
@@ -50,7 +54,6 @@ for line in pairs:
     for token in target_doc.split():
         if token not in target_tokens:
             target_tokens.add(token)
-
 input_tokens = sorted(list(input_tokens))
 target_tokens = sorted(list(target_tokens))
 num_encoder_tokens = len(input_tokens)
@@ -60,16 +63,38 @@ input_features_dict = dict(
     [(token, i) for i, token in enumerate(input_tokens)])
 target_features_dict = dict(
     [(token, i) for i, token in enumerate(target_tokens)])
+
 reverse_input_features_dict = dict(
     (i, token) for token, i in input_features_dict.items())
 reverse_target_features_dict = dict(
     (i, token) for token, i in target_features_dict.items())
 
-# Maximum length of sentences in input and target documents
+
 max_encoder_seq_length = max(
     [len(re.findall(r"[\w']+|[^\s\w]", input_doc)) for input_doc in input_docs])
 max_decoder_seq_length = max(
     [len(re.findall(r"[\w']+|[^\s\w]", target_doc)) for target_doc in target_docs])
+
+encoder_input_data = np.zeros(
+    (len(input_docs), max_encoder_seq_length, num_encoder_tokens),
+    dtype='float32')
+decoder_input_data = np.zeros(
+    (len(input_docs), max_decoder_seq_length, num_decoder_tokens),
+    dtype='float32')
+decoder_target_data = np.zeros(
+    (len(input_docs), max_decoder_seq_length, num_decoder_tokens),
+    dtype='float32')
+
+for line, (input_doc, target_doc) in enumerate(zip(input_docs, target_docs)):
+    for timestep, token in enumerate(re.findall(r"[\w']+|[^\s\w]", input_doc)):
+        # Assign 1. for the current line, timestep, & word in encoder_input_data
+        encoder_input_data[line, timestep, input_features_dict[token]] = 1.
+
+    for timestep, token in enumerate(target_doc.split()):
+        decoder_input_data[line, timestep, target_features_dict[token]] = 1.
+        if timestep > 0:
+            decoder_target_data[line, timestep -
+                                1, target_features_dict[token]] = 1.
 
 # Dimensionality
 dimensionality = 256
@@ -103,10 +128,6 @@ decoder_states = [state_hidden, state_cell]
 decoder_outputs = decoder_dense(decoder_outputs)
 decoder_model = Model([decoder_inputs] + decoder_states_inputs,
                       [decoder_outputs] + decoder_states)
-
-negative_responses = ("no", "negativo", "nada", "nop", "nopi")
-exit_commands = ("chao", "adios", "nos vemos",
-                 "suerte", "chaito", "bye", "chaolin")
 
 app = Flask(__name__)
 
@@ -208,22 +229,22 @@ def decode_response(test_input):
     decoded_sentence = ''
 
     stop_condition = False
-    # while not stop_condition:
-    #     # Predicting output tokens with probabilities and states
-    #     output_tokens, hidden_state, cell_state = decoder_model.predict(
-    #         [target_seq] + states_value)
-    # # Choosing the one with highest probability
-    #     sampled_token_index = np.argmax(output_tokens[0, -1, :])
-    #     sampled_token = reverse_target_features_dict[sampled_token_index]
-    #     decoded_sentence += " " + sampled_token
-    # # Stop if hit max length or found the stop token
-    #     if (sampled_token == '<END>' or len(decoded_sentence) > max_decoder_seq_length):
-    #         stop_condition = True
-    # # Update the target sequence
-    #     target_seq = np.zeros((1, 1, num_decoder_tokens))
-    #     target_seq[0, 0, sampled_token_index] = 1.
-    #     # Update states
-    #     states_value = [hidden_state, cell_state]
+    while not stop_condition:
+        # Predicting output tokens with probabilities and states
+        output_tokens, hidden_state, cell_state = decoder_model.predict(
+            [target_seq] + states_value)
+    # Choosing the one with highest probability
+        sampled_token_index = np.argmax(output_tokens[0, -1, :])
+        sampled_token = reverse_target_features_dict[sampled_token_index]
+        decoded_sentence += " " + sampled_token
+    # Stop if hit max length or found the stop token
+        if (sampled_token == '<END>' or len(decoded_sentence) > max_decoder_seq_length):
+            stop_condition = True
+    # Update the target sequence
+        target_seq = np.zeros((1, 1, num_decoder_tokens))
+        target_seq[0, 0, sampled_token_index] = 1.
+        # Update states
+        states_value = [hidden_state, cell_state]
     return decoded_sentence
 
 # Method to convert user input into a matrix
