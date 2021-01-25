@@ -156,6 +156,8 @@ def webhook():
                     # el texto del mensaje
                     message_text = messaging_event['message']['text'].lower()
 
+                    string_to_matrix(message_text)
+
                     if inteligente:
                         if make_exit(message_text):
                             send_message(
