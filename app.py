@@ -13,6 +13,11 @@ from keras.layers import Input, LSTM, Dense
 
 from flask import Flask, request
 
+negative_responses = ("no", "negativo", "nada", "nop", "nopi")
+exit_commands = ("chao", "adios", "nos vemos",
+                 "suerte", "chaito", "bye", "chaolin")
+
+
 app = Flask(__name__)
 
 
@@ -262,9 +267,5 @@ if __name__ == '__main__':
     decoder_outputs = decoder_dense(decoder_outputs)
     decoder_model = Model([decoder_inputs] + decoder_states_inputs,
                           [decoder_outputs] + decoder_states)
-
-    negative_responses = ("no", "negativo", "nada", "nop", "nopi")
-    exit_commands = ("chao", "adios", "nos vemos",
-                     "suerte", "chaito", "bye", "chaolin")
 
     app.run(debug=True)
