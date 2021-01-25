@@ -167,7 +167,7 @@ def webhook():
                                 sender_id, "Ok, perfecto!")
                         else:
                             send_message(
-                                sender_id, "generate_response(message_text)")
+                                sender_id, generate_response(message_text))
                     else:
                         send_message(sender_id, 'Hola')
 
