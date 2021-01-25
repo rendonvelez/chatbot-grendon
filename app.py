@@ -198,6 +198,7 @@ def send_message(recipient_id, message_text):
 
 def decode_response(test_input):
     # Getting the output states to pass into the decoder
+    log("Pruebas")
     states_value = encoder_model.predict(test_input)
     # Generating empty target sequence of length 1
     target_seq = np.zeros((1, 1, num_decoder_tokens))
