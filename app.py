@@ -212,22 +212,22 @@ def decode_response(test_input):
     decoded_sentence = ''
 
     stop_condition = False
-    while not stop_condition:
-        # Predicting output tokens with probabilities and states
-        output_tokens, hidden_state, cell_state = decoder_model.predict(
-            [target_seq] + states_value)
-    # Choosing the one with highest probability
-        sampled_token_index = np.argmax(output_tokens[0, -1, :])
-        sampled_token = reverse_target_features_dict[sampled_token_index]
-        decoded_sentence += " " + sampled_token
-    # Stop if hit max length or found the stop token
-        if (sampled_token == '<END>' or len(decoded_sentence) > max_decoder_seq_length):
-            stop_condition = True
-    # Update the target sequence
-        target_seq = np.zeros((1, 1, num_decoder_tokens))
-        target_seq[0, 0, sampled_token_index] = 1.
-        # Update states
-        states_value = [hidden_state, cell_state]
+    # while not stop_condition:
+    #     # Predicting output tokens with probabilities and states
+    #     output_tokens, hidden_state, cell_state = decoder_model.predict(
+    #         [target_seq] + states_value)
+    # # Choosing the one with highest probability
+    #     sampled_token_index = np.argmax(output_tokens[0, -1, :])
+    #     sampled_token = reverse_target_features_dict[sampled_token_index]
+    #     decoded_sentence += " " + sampled_token
+    # # Stop if hit max length or found the stop token
+    #     if (sampled_token == '<END>' or len(decoded_sentence) > max_decoder_seq_length):
+    #         stop_condition = True
+    # # Update the target sequence
+    #     target_seq = np.zeros((1, 1, num_decoder_tokens))
+    #     target_seq[0, 0, sampled_token_index] = 1.
+    #     # Update states
+    #     states_value = [hidden_state, cell_state]
     return decoded_sentence
 
 
@@ -243,11 +243,10 @@ def string_to_matrix(user_input):
 
 def generate_response(user_input):
     input_matrix = string_to_matrix(user_input)
-    #chatbot_response = decode_response(input_matrix)
+    chatbot_response = decode_response(input_matrix)
     # Remove <START> and <END> tokens from chatbot_response
-    #chatbot_response = chatbot_response.replace("<START>", '')
-    #chatbot_response = chatbot_response.replace("<END>", '')
-    chatbot_response = input_matrix
+    chatbot_response = chatbot_response.replace("<START>", '')
+    chatbot_response = chatbot_response.replace("<END>", '')
     return chatbot_response
     # Method to check for exit commands
 
