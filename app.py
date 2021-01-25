@@ -25,10 +25,10 @@ with open(data_path, 'r', encoding='utf-8') as f:
     lines = f.read().split('\n')
 with open(data_path2, 'r', encoding='utf-8') as f:
     lines2 = f.read().split('\n')
-lines = [re.sub(r"\[\w+\]", 'hola', line.lower()) for line in lines]
-lines = [" ".join(re.findall(r"\w+", line.lower())) for line in lines]
-lines2 = [re.sub(r"\[\w+\]", '', line.lower()) for line in lines2]
-lines2 = [" ".join(re.findall(r"\w+", line.lower())) for line in lines2]
+lines = [re.sub(r"\[\w+\]", 'hola', line) for line in lines]
+lines = [" ".join(re.findall(r"\w+", line)) for line in lines]
+lines2 = [re.sub(r"\[\w+\]", '', line) for line in lines2]
+lines2 = [" ".join(re.findall(r"\w+", line)) for line in lines2]
 # Grouping lines by response pair
 pairs = list(zip(lines, lines2))
 # random.shuffle(pairs)
