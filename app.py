@@ -180,7 +180,7 @@ def webhook():
                                 sender_id, "Que tengas un hermoso día!")
                         elif message_text in negative_responses:
                             send_message(
-                                sender_id, "Ok, perfecto!")
+                                sender_id, "Ok, perfecto, que tengas un hermoso día!")
                         else:
                             send_message(
                                 sender_id, generate_response(message_text))
