@@ -74,9 +74,7 @@ max_decoder_seq_length = max(
 
 # Dimensionality
 dimensionality = 256
-# The batch size and number of epochs
-batch_size = 5
-epochs = 600
+
 # Encoder
 encoder_inputs = Input(shape=(None, num_encoder_tokens))
 encoder_lstm = LSTM(dimensionality, return_state=True)
@@ -243,10 +241,11 @@ def string_to_matrix(user_input):
 
 def generate_response(user_input):
     input_matrix = string_to_matrix(user_input)
-    chatbot_response = decode_response(input_matrix)
+    #chatbot_response = decode_response(input_matrix)
     # Remove <START> and <END> tokens from chatbot_response
-    chatbot_response = chatbot_response.replace("<START>", '')
-    chatbot_response = chatbot_response.replace("<END>", '')
+    #chatbot_response = chatbot_response.replace("<START>", '')
+    #chatbot_response = chatbot_response.replace("<END>", '')
+    chatbot_response = input_matrix
     return chatbot_response
     # Method to check for exit commands
 
