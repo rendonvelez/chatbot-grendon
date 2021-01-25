@@ -8,10 +8,8 @@ import sys
 import json
 import requests
 import numpy as np
-import tensorflow as tf
-import tensorflow as tf
 from keras.layers import Input, LSTM, Dense
-from keras.models import Model
+from keras.models import load_model, Model
 
 from flask import Flask, request
 
@@ -88,7 +86,7 @@ decoder_outputs, decoder_state_hidden, decoder_state_cell = decoder_lstm(
 decoder_dense = Dense(num_decoder_tokens, activation='softmax')
 decoder_outputs = decoder_dense(decoder_outputs)
 
-training_model = tf.keras.models.load_model('model/training_model.h5')
+training_model = load_model('model/training_model.h5')
 encoder_inputs = training_model.input[0]
 encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
 encoder_states = [state_h_enc, state_c_enc]
@@ -200,7 +198,7 @@ def send_message(recipient_id, message_text):
 
 def decode_response(test_input):
     # Getting the output states to pass into the decoder
-    states_value = encoder_model.predict(test_input)
+    # states_value = encoder_model.predict(test_input)
     # Generating empty target sequence of length 1
     target_seq = np.zeros((1, 1, num_decoder_tokens))
     # Setting the first token of target sequence with the start token
