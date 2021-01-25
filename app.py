@@ -265,6 +265,6 @@ if __name__ == '__main__':
 
     negative_responses = ("no", "negativo", "nada", "nop", "nopi")
     exit_commands = ("chao", "adios", "nos vemos",
-
                      "suerte", "chaito", "bye", "chaolin")
+
     app.run(debug=True)
