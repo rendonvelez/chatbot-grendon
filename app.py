@@ -231,7 +231,7 @@ def decode_response(test_input):
 # Method to convert user input into a matrix
 
 
-def string_to_matrix(self, user_input):
+def string_to_matrix(user_input):
     tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
     user_input_matrix = np.zeros(
         (1, max_encoder_seq_length, num_encoder_tokens),
