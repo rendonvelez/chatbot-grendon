@@ -5,8 +5,8 @@ Werkzeug
 click
 gunicorn
 itsdangerous
-requests==2.25.1
-wheel==0.35
-tensorflow-cpu==2.4.1
-Keras==2.4.3
-numpy==1.19.5
+requests
+wheel~=0.35
+tensorflow-cpu
+keras
+numpy

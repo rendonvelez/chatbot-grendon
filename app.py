@@ -151,7 +151,7 @@ def verify():
             return ('Verification token mismatch', 403)
         return (request.args['hub.challenge'], 200)
 
-    return ("hello world!", 200)
+    return ('Hello world', 200)
 
 
 @app.route('/', methods=['POST'])
@@ -178,7 +178,7 @@ def webhook():
                     recipient_id = messaging_event['recipient']['id']
 
                     # el texto del mensaje
-                    message_text = messaging_event['message']['text'].lower()
+                    message_text = messaging_event['message']['text']
 
                     if inteligente:
                         if make_exit(message_text):
