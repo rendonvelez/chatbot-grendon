@@ -1,5 +1,5 @@
 Flask
 requests
-tensorflow
+tensorflow-cpu
 keras
 numpy
