@@ -111,7 +111,14 @@ decoder_outputs, decoder_state_hidden, decoder_state_cell = decoder_lstm(
 decoder_dense = Dense(num_decoder_tokens, activation='softmax')
 decoder_outputs = decoder_dense(decoder_outputs)
 
-training_model = load_model('model/training_model2.h5')
+# Model
+training_model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
+# Compiling
+training_model.compile(
+    optimizer='ADAM', loss='categorical_crossentropy', metrics=['accuracy'])
+
+#training_model = load_model('model/training_model.h5')
+training_model.load_weights('model/training_weights')
 encoder_inputs = training_model.input[0]
 encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
 encoder_states = [state_h_enc, state_c_enc]
@@ -144,7 +151,7 @@ def verify():
             return ('Verification token mismatch', 403)
         return (request.args['hub.challenge'], 200)
 
-    return ('Hello world', 200)
+    return (generate_response("que cuesta la arepa de huevo?"), 200)
 
 
 @app.route('/', methods=['POST'])
