@@ -1,12 +1,5 @@
 Flask
-Jinja2
-MarkupSafe
-Werkzeug
-click
-gunicorn
-itsdangerous
 requests
-wheel==0.35
-tensorflow-cpu
+tensorflow
 keras
 numpy
