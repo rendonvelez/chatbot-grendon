@@ -171,7 +171,7 @@ def webhook():
                     recipient_id = messaging_event['recipient']['id']
 
                     # el texto del mensaje
-                    message_text = messaging_event['message']['text'].lower()
+                    message_text = messaging_event['message']['text']
 
                     if inteligente:
                         if make_exit(message_text):
