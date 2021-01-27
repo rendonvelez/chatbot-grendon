@@ -119,7 +119,7 @@ training_model.compile(
     optimizer='ADAM', loss='categorical_crossentropy', metrics=['accuracy'])
 
 #training_model = load_model('model/training_model3.h5')
-training_model.load_weights('model/training_weights')
+training_model.load_weights('model/training_weights.hdf5')
 encoder_inputs = training_model.input[0]
 encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
 encoder_states = [state_h_enc, state_c_enc]
@@ -169,6 +169,7 @@ def decode_response(test_input):
 
 # Method to convert user input into a matrix
 
+
 def string_to_matrix(user_input):
     tokens = re.findall(r"[\w']+|[^\s\w]", user_input)
     user_input_matrix = np.zeros(
@@ -180,6 +181,7 @@ def string_to_matrix(user_input):
     return user_input_matrix
 
 # Method that will create a response using seq2seq model we built
+
 
 def generate_response(user_input):
     input_matrix = string_to_matrix(user_input)
@@ -196,7 +198,7 @@ def make_exit(reply):
             return True
     return False
 
+
 user_response = input("Hola, bienvenido en que te puedo ayudar?\n")
 
-generate_response(user_response)
-
+print(generate_response(user_response))
