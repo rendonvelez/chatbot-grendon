@@ -117,8 +117,8 @@ training_model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
 training_model.compile(
     optimizer='ADAM', loss='categorical_crossentropy', metrics=['accuracy'])
 
-#training_model = load_model('model/training_model3.h5')
-training_model.load_weights('model/training_weights')
+#training_model = load_model('model/training_model.h5')
+training_model.load_weights('model/training_weights.hdf5')
 encoder_inputs = training_model.input[0]
 encoder_outputs, state_h_enc, state_c_enc = training_model.layers[2].output
 encoder_states = [state_h_enc, state_c_enc]
