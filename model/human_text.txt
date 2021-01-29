@@ -6,22 +6,22 @@ Y con leche?
 Gaseosa manejas?
 listo, entonces me envias la arepa de huevo y una coca cola bien fria.
 Direccion cll 2 # 74 B 86 Zamora apt 201, $50
-[start] Buenas noches
+Buenas noches
 Deseo una pizza por favor
 Se puede mitad y mitad?
 y que precio tiene mitad hawayana y mitad de peperoni?
 Ok, me envias una pizza asi por favor
-una pizza Junior mitad Haw y mitad peperoni 
+una pizza Junior mitad Hawaiana y mitad peperoni 
 aahhh y una gaseosa
 una cocacola litro y cuarto
 Clla 55 aa 78 int 1919 , Urb Pino Alto , eso es villa verde,me mandas  deviuelta de $20
 Gracias
-[start] Buenas tardes
+Buenas tardes
 chica tienes servicio 
 ok,me envias un calzoni de pollo con carnes sin maicitos, porfa
 No solo el calzone
 ¿Cuanto demora?
-listo
+Listo
 Urbanización montes de la colina Apt 1109, esto es por la salida del puente y completo
 No asi esta bien
 [start] Hola
@@ -33,8 +33,8 @@ una gaseosa
 si, Cr 80 # 78 a 26 segundo piso
 devuelta de 20
 Me echas salsa rosada por favor
-No , por ahora asi esta bien
-Que tal
+No, por ahora asi esta bien
+[start] Que tal
 [start] Hola Buenas noches
 ¿A que horas abren?
 A bueno, gracias
@@ -47,7 +47,7 @@ No, no necesito nada más por el momento
 No yo paso por ella 
 A nombre de Samuel
 Esta abierto?
-[start] Buenas noches, para pwdir un domicilios
+[start] Buenas noches, para pedir un domicilio
 Cual es el menú para hoy
 A que horas abren
 A como es el almuerzo?
@@ -63,7 +63,7 @@ No necesito nada más
 Que hay para hoy?
 Para un domicilio
 [start] Buenas noches tiene huevitos de codorniz?
-Y tienes maicitos con queso??
+Y tienes maicitos con queso?
 Me das 2 por favor
 Si, una pizza familiar Paisa
 No, Yo paso por esto.
@@ -137,7 +137,7 @@ Puedo pedirla con arepa?
 Y bebidas?
 Me puede enviar una arepa con una torta de lentejas y limonada por favor
 Me lo envias a laureles
-[start] Buenas tardes, tiene huevos de codorniz?
+Buenas tardes, tiene huevos de codorniz?
 Y tiene arepas con queso?
 OK, muchas gracias
 Buenas tardes, que menu economico hay?
@@ -150,7 +150,7 @@ Y la ensalada que acompaña el chuzo de que es?
 Dos de pollo, gracias
 asi es
 Todas las salsas que quiera
-Buenas, tiene cazuela de frijoles?
+[start] Buenas, tiene cazuela de frijoles?
 La cazuela trae platano maduro o ripio ?
 De acuerdo, y tiene jugo de fresa?
 Necesito un pedido de 5, por favor , hacen envios?
@@ -209,7 +209,7 @@ aun no me llega el menu
 Ok, Me puedes enviar una grande
 ¿Cuanto demora el pedido?
 Muchas Gracias
-[start] Que tal!
+Que tal!
 Deseo un sandwich de pollo
 Grande por favor 
 si , por favor
@@ -228,12 +228,12 @@ OK, muchas gracias
 Que tal!
 Estan demorados los domicilios?
 ok,tienes piza?
-pizza
+me refieron a pizza
 Que costaria una pizza personal?
 Me da una pizza hawaina entonces
 No por ahora solo eso
 Urb manzanares casa 108 
-ok
+ok, muchas gracias
 [start] Hola
 Una pisa grande
 una paisa grande
@@ -257,5 +257,5 @@ Que cuesta Hawaina
 Junior Hawaina
 y mitad de peperoni?
 listo me la envias por favor
-no
+No, así está bien, gracias
 Direccion cll 50 # 74 B 86 el huquito apt 201, $50
