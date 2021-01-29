@@ -1,103 +1,103 @@
-¡Buenos Días!, ¿En que puedo servirle?
+¡Buenos Días!,  ¿En que puedo servirle?
 ¡Claro que si!,¿Que deseas pedir a domicilio?
 La arepa tiene un costo de $2000 pesos, sin incluir el domicilio.
-Si, el chocolate tiene un costo de $1000 sin leche.
-con leche tiene un costo de $2000 pesos.
-Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
-Es con mucho gusto, gracias por preferirnos.
+!Claro! , el chocolate un costo de $1000 sin leche.
+con lehe tiene un costo de $2000 pesos.
+Si, productos Postobon y Cocacola.
+Me envias tu Dirección, Barrio y devuelta de cuanto, ¡por favor!
+Listo, es con mucho gusto , Gracias por preferirnos ;).
 ¡Buenas Noches!, ¿En que puedo servirle?
 ¡Claro que si!, Indicame el tamaño y el sabor de la pizza, !por favor!.
 Si,el precio varia segun las combinaciones de la pizza.
 ¡Lo siento soy un Robot! , el precio aproximado es la suma del precio de ambas  dividido por 2.
 Me especificas por favor el tamaño y especificaciones de tu pizza.
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
-Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
-Es con mucho gusto, gracias por preferirnos.
-Es con mucho gusto, gracias por preferirnos.
+Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
+Si, productos Postobon y Cocacola.
+Esta bién, Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
+Listo, es con mucho gusto , Gracias por preferirnos ;).
+Gracias a tí por preferirnos
 ¡Buenas Tardes!, ¿En que puedo servirle?
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
+!Claro que si!, Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
 ¡Claro que si!, ¿Algo más?
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
+Esta bién, Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
 Nuestros pedidos demoran de 25 a 30 minutos después de preparados.
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
+Esta bién , Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
 ¡Claro que si!,¿Deseas Algo más?
-Es con mucho gusto, gracias por preferirnos.
-Hola, ¿En que puedo servirte?
+Listo, es con mucho gusto , Gracias por preferirnos ;)
+hola, ¿En que puedo servirte?
 ¡Claro que si!,  ¿Que deseas pedir a domicilio?
 El chuzo de pollo tiene un costo de $10000
-¡Claro que si!,¿Deseas Algo más?
-Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
-Es con mucho gusto, gracias por preferirnos.
-¡Claro que si!,¿Deseas Algo más?
-Es con mucho gusto, gracias por preferirnos.
+¡Claro que si! ¿Te enviamos Algo más?
+Si, productos Postobon y Cocacola.
+Esta bién, Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
+Esta bién, Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
+Listo, es con mucho gusto , Gracias por preferirnos ;).
+¡Claro que si!, ¿Deseas Algo más?
+Listo, es con mucho gusto , Gracias por preferirnos ;).
 ¡Bienvenido!,  ¿En que puedo servirle?
 ¡Buenas Noches!,  ¿En que puedo servirle?
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
-Es con mucho gusto, gracias por preferirnos.
+Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
+Listo, es con mucho gusto , Gracias por preferirnos ;).
 Es un gusto atenderte
 Hola, ¿En que puedo servirte?
 ¡Claro que si!,  ¿En que puedo servirle?
 ¡Claro que si!, Indicame el tamaño y el sabor de la pizza,¡por favor!.
 ¡Claro que si! ¿Algo más ademas de la porción de pizza?
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
+Esta bién, Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
 ¿A Nombre de quién? por favor
-Es con mucho gusto, gracias por preferirnos.
+Listo, es con mucho gusto , Gracias por preferirnos ;).
 ¡Claro que si!, está abierto,  ¿En que puedo servirle?
 ¡Claro que si!, si tenemos domicilio ¿En que puedo servirle?
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
-A $10000 el trifásico y a $8000 el del día
+Nuestro Menu: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
+Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
+A $10000 el trifásic y a $8000 el del día
 si señor, la gaseosa iba incluida
 Ya está en camino
 Si, cuesta 5000 el domicilio
-Es con mucho gusto, gracias por preferirnos.
+Listo, es con mucho gusto , Gracias por preferirnos ;).
 El almuerzo es Chuzo de pollo
 Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
 ¿Cuales salsas desea?
-¡Claro que si!,¿Deseas Algo más?
-Es con mucho gusto, gracias por preferirnos.
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+¡Claro que si! ¿Desea algo más?
+Listo, es con mucho gusto , Gracias por preferirnos ;).
+El Menu para hoy: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 ¡Bienvenido!,  ¿Que desea pedir a domicilio?
 Asi es, ¿Cuántos huevitos desea?
 ¡Claro que si!, ¿Cuántos maicitos desea?
-¡Claro que si!,¿Deseas Algo más?
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
+¡Claro que si!, ¿Necesitas que te envie algo más?
+Esta bién, Me envias tu Dirección, Barrio y devuelta de cuanto por favor?
 ¿A Nombre de quién? por favor
-Es con mucho gusto, gracias por preferirnos.
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+Listo, es con mucho gusto , Gracias por preferirnos ;).
+Nuestro Menu el dia de hoy es: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 Lo siento soy un Robot, todo depende de las restricciones de Movilidad.
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
-Es con mucho gusto, gracias por preferirnos.
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
+Listo, es con mucho gusto , Gracias por preferirnos ;).
+Nuestro Menu el dia de hoy es: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 El domicilio tiene un costo de $5000
 ¿A que se refiere con lo menos?
 Si señor, este es el precio del domicilio
 ¡Es con mucho gusto! ¿Desea algo más?
-Es con mucho gusto, gracias por preferirnos.
+Listo, es con mucho gusto , Gracias por preferirnos ;).
 Pechuga, pescado y chicharrón
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
+Nuestro Menu el dia de hoy es: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
+Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
 El total a pagar es  $44800
-Hola, ¿En que puedo servirte?
+Hola, como estas?
 Si señor, hay almuerzos
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+Nuestro Menu el dia de hoy es: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 El menú del día cuesta $10000
 Sopa, carne, frijoles, arroz, y chicharron
 Para tomar hay Mazamorra o guarapo
-¡Claro que si!,¿Deseas Algo más?
-Es con mucho gusto, gracias por preferirnos.
+¡Claro que si!, ¿Necesitas que te envie algo más?
+Listo, es con mucho gusto , Gracias por preferirnos ;).
 Buen día, ¿En que puedo servirte?
 Muy bien.¿En que puedo ayudarlo?
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+Nuestro Menu el dia de hoy es: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 También tenemos platos a la carta
 Si, robalo y trucha
 Si señora
-¡Claro que si!,¿Deseas Algo más?
-Es con mucho gusto, gracias por preferirnos.
+¡Claro que si!, ¿Deseas que te envie Algo más?
+Gracias a tí por preferirnos
 Hola, ¿En que puedo servirte?
 Si señora, si hay maizitos
 !Claro!, Enviamos la dirección por favor y ¿devuelta de cuanto?
@@ -108,7 +108,7 @@ Puedes repetirme por favor?
 No entiendo lo que me dices, esto es un restaurante
 Estamos ubicados en medellin
 El precio para el canzoni es $10000 el tradicional, a $12000 el trifásico y $9000 hawaiano
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
+Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
 Hay pizza pequeña,mediana, familiar y extragrande
 La pizza familiar tiene 12 porciones
 La pizza pequeña tiene 4 pociones
@@ -116,7 +116,7 @@ La pizza mediana tiene 8 pociones
 La pizza extragrande tiene 10 porciones
 Claro que si, puede armar las pizzas a su gusto
 Tenemos Hawaiana, jamón y queso, napolitana, y calabresa
-Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
+Si, productos Postobon y Cocacola.
 Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
 El plato especial de la casa es: carne de pollo en salsa, verduras y ensalada
 Postres tenemos de Fresa, limón y maracuya
@@ -126,8 +126,8 @@ El plato especial de la casa es: carne de pollo en salsa, verduras y ensalada
 Si, recientemente incluimos sanduche dentro del menú
 En este momento tengo sanduche de atun, jamon y pepperoni
 Claro que si, tiene diferentes opciones para armar el sanduche  a su gusto
-Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
-Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
+Si, productos Postobon y Cocacola.
+Si, productos Postobon y Cocacola.
 Tenemos wafles estilo bruselas
 Si, puedo poner la salsa que desee
 Claro señor, ya mismo se lo empacamos
@@ -139,16 +139,16 @@ Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
 !Claro!, Enviamos la dirección por favor y ¿devuelta de cuanto?
 Asi es, ¿Cuántos huevitos desea?
 ¿Cuantas arepas desea?
-Es con mucho gusto, gracias por preferirnos.
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+Gracias a tí por preferirnos
+El Menu para hoy: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 Si, productos Postobon ,Cocacola o Jugos naturales y limonada.
-¡Claro que si!,¿Deseas Algo más?
+¡Claro que si!, ¿Necesitas algo más?
 Claro vendemos chuzos
-Chuzos de res, cerdo y  pollo
+¡Claro que si!, ¿Necesitas que te envie algo más. Chuzos de res, cerdo y  pollo
 Si, los chuzos traen papitas y ensalada
 Es ensalada de repollo
 ¿Te envio dos chuzos de pollo?
-¡Claro que si!,¿Deseas Algo más?
+Esta bién, ¿deseas que te envie algo más?
 !Claro!, Enviamos la dirección por favor y ¿devuelta de cuanto?
 si señor, hay frijoles
 Si, la cazuela trae todo
@@ -157,7 +157,7 @@ Claro, tenemos servicio a domicilio
 Recibimos los metodos de pago efectivo y tranferencia
 Listo,  la cuenta es 3000567397 ahorros Bancolombia.
 Buenos días, ¿en que te puedo servir?
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
+Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
 Las sachipapas especiales traen salchicha, tocineta y queso
 Asi es , las salchipas son grandes y pequeñas
 Si,tenemos adiciones
@@ -167,11 +167,11 @@ Si, tenemos carne de res y pollo
 Combo Hamburguesa , papas y gaseosa.
 El como aplica para la hamburguesa sencilla
 Pedido tomado,enviame por favor tus datos
-Es con mucho gusto, gracias por preferirnos.
-Hola, ¿En que puedo servirte?
+Es un gusto servirte, Gracias por preferirnos.
+Buenos días, ¿en que te puedo servir?
 Su carne está en termino medio!
 Disculpa, tenemos varios pedidos demorados pero estamos trabajndo en el tuyo.
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+El Menu para hoy: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 Si, recientemente incluimos sanduche dentro del menú
 Nuestra entrada es: yuquitas, patacones o empanadas
 Lo sentimos, ¿como podemos compensarte?
@@ -187,34 +187,34 @@ El domicilio tiene un costo de $5000
 Te recomiendo unos canelones de pollo
 ¡Claro que si!, ya te la preparo tu hamburguesa
 Tenemos Jugos en agua o leche
-¡Claro que si!,¿Deseas Algo más?
+Es con mucho gusto, ¿Desea algo más?
 !Claro!, Enviamos la dirección por favor y ¿devuelta de cuanto?
-Es con mucho gusto, gracias por preferirnos.
-Es con mucho gusto, gracias por preferirnos.
+Listo, es con mucho gusto , Gracias por preferirnos ;).
+Gracias a tí por preferirnos
 Si, si tenemos cerveza
 A que plato te refieres?
 La chata con papas lo puedes acompañar con un vino blanco
 Así es, tenemos varias opciones vegetarianas
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+Nuestro Menu el dia de hoy es: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 Listo,  la cuenta es 3000567397 ahorros Bancolombia.
-El costo es de: $40500
+son $40500
 Enviame por favor tus datos por favor
 Es con todo gusto, estamos preparando tu servicio.
-Es con mucho gusto, gracias por preferirnos.
-Hola, ¿En que puedo servirte?
+¡Gracias a tí  por preferirnos!
+Hola, como estas?
 Hola ya te envio nuestro menu
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
+Nuestro Menu: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
 Si, la lasaña viene tamaño grande y pequeña
 El costo varia segun el tamaño
 ¡Claro que si!, ¿Necesitas que te envie algo más?
 Su pedido demora entre 45 y 60 minutos
-Es con mucho gusto, gracias por preferirnos.
+¡Gracias a tí  por preferirnos!
 Hola, ¿En que puedo servirte?
 ¿De que tamaño deseas tu sandwich?
 Se enviara entonces un sandwich grande
 !Claro!, Enviamos la dirección por favor y ¿devuelta de cuanto?
 Es con todo gusto, estamos preparando tu sandwich.
-Es con mucho gusto, gracias por preferirnos.
+¡Gracias a tí  por preferirnos!
 Buenas Noches
 Nuestro plato recomendado o especial es el pollo a la plancha con salsa de champiñones.
 sino es pollo, otro recomendado es la chata asada con chimichurri.
@@ -224,23 +224,23 @@ ok,te enviaremos entonces una chata y jugo de mora en leche
 Tu pedido se demorara entre 50 y 60 minutos
 Esta bién esperaremos que pases por tu pedido
 El costo de tu pedido varia segun eñ tamaño
-Es con mucho gusto, gracias por preferirnos.
+¡Gracias a tí  por preferirnos!
 !Hola que tal!
 Los domicilios estan demorando entre 45 y 60 minutos.
 ¿Te refieres a pizza o piazza?
 Si, el precio de la pizza depende del tamaño y los sabores que escojas
 La pizza personal tiene un precio de $4500
-¡Claro que si!, ¿Necesitas que te envie algo más?
+Te enviaremos entonces una pizza hawaina,¿Deseas algo más?
 !Claro!, Enviamos la dirección por favor y ¿devuelta de cuanto?
-Es con mucho gusto, gracias por preferirnos.
-Es con mucho gusto, gracias por preferirnos.
-Hola, ¿En que puedo servirte?
+Listo, es con mucho gusto , Gracias por preferirnos ;)
+Listo, es con mucho gusto , Gracias por preferirnos ;)
+Hola,¿En que puedo servirte?
 ¿Te refieres a pizza o paisa?
 ¿Te refieres a una pizza paisa?
 !Claro!, Enviamos la dirección por favor y ¿devuelta de cuanto?
-¡Claro que si!,¿Deseas Algo más?
-Es con mucho gusto, gracias por preferirnos.
-Hola, ¿En que puedo servirte?
+¿Deseas algo más?
+Gracias a tí por preferirnos
+Hola, ya te envio nuestro menu
 Si ya tienes nuestro menu,¿Que deseas pedir?
 Te enviamos unas salchipapas de que tamaño?
 Te enviaremos unas salchipas grandes entonces
@@ -248,14 +248,14 @@ Te enviaremos unas salchipas grandes entonces
 Te enviaremos entonces unas salchipapas
 Te enviamos unas salchipapas con salsa rosada y piña
 Nuestros pedidos se estan demorando entre 45  y 60 minutos.
-Es con mucho gusto, gracias por preferirnos.
-Nuestro Menu: Almuerzos caseros,Pizza y comidas Rapidas
-El Horario de Atención es: Todos los días de  5 p.m a 11:30 pm
+Gracias a tí por preferirnos
+El Menu para hoy: Almuerzos caseros,Pizza, Calzone ,Lasaña,Chuzos, Costillas,Sandwich,Macicitos Gratinados y salchipapas.
+Nuestro Horario de Atención es: Martes a Viernes de 5 p.m a 11:30 pm y fines de semana de 3 p.m a 12 p.m
 Te recomiendo pizza, esta deliciosa.
 Si,el precio varia segun las combinaciones de la pizza.
 ¿Que tamano de pizza Hawaina?
 La Junior Hawaina cuesta $12000
 ¡Lo siento soy un Robot! , el precio aproximado es la suma del precio de ambas  dividido por 2.
-¡Claro que si!, ¿Necesitas que te envie algo más?
-Esta bien, Me envias tu Dirección, Barrio y devuelta de cuanto,¡por favor!
-Es con mucho gusto, gracias por preferirnos.
+¡Claro que si!, ¿Deseas que te envie Algo más?
+Me envias tu Dirección, Barrio y devuelta de cuanto, ¡por favor!
+Listo, es con mucho gusto , Gracias por preferirnos ;).

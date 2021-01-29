@@ -195,10 +195,15 @@ def generate_response(user_input):
 def make_exit(reply):
     for exit_command in exit_commands:
         if exit_command in reply:
-            return True
+            print("Un gusto atenderlo, hasta luego")
+            return True            
     return False
 
+def chat(reply):
+  while not make_exit(reply):
+    reply = input(generate_response(reply)+"\n")
 
 user_response = input("Hola, bienvenido en que te puedo ayudar?\n")
 
-print(generate_response(user_response))
+chat(user_response)
+#print(generate_response(user_response))
